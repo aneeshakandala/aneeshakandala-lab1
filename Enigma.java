@@ -20,11 +20,7 @@ public class Enigma{
 
 
     public String decrypt(String message){        
-        //return "";
-        //find index of the character on the outer ring, match with index of middle ring
-        //find the same character on the middle ring
-        //match with character on outer ring, find character that aligns on the innermost ring
-        //rotate 
+
         String decryptedString = "";
         char tempChar1;
         char tempChar2;
@@ -32,13 +28,17 @@ public class Enigma{
         int tempIndex2;
         
         for (int i = 0; i < message.length(); i++){
+            //find index of the character on the outer ring, match with index of middle ring
             tempIndex1 = this.rotors[2].indexOf(message.charAt(i));
+            //find the same character on the middle ring
             tempChar1 = this.rotors[1].charAt(tempIndex1);
+            //match with character on outer ring
             tempIndex2 = this.rotors[2].indexOf(tempChar1);
+            //find character that aligns on the innermost ring
             tempChar2 = this.rotors[0].charAt(tempIndex2);
-
+            //add element
             decryptedString += tempChar2;
-
+            //rotate
             rotate();
         }
         return decryptedString;
@@ -47,17 +47,18 @@ public class Enigma{
 
     
     public String encrypt(String message){
-        //return "";
+
         String encryptedString = "";
         char tempChar1;
         char tempChar2;
         int tempIndex1;
         int tempIndex2;
+        
         for (int i = 0; i < message.length(); i++){
             //find the character on the inner ring, note the character aligned with it on outer ring
             //find that character on the middle rotor, then output the one aligned with it on the outer rotor
             //rotate clockwise
-            //
+
             //find index of inner ring, match it to the same index on outer ring
             tempIndex1 = this.rotors[0].indexOf(message.charAt(i));            
             tempChar1 = this.rotors[2].charAt(tempIndex1);
