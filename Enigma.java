@@ -26,15 +26,18 @@ public class Enigma{
         //match with character on outer ring, find character that aligns on the innermost ring
         //rotate 
         String decryptedString = "";
-        char tempChar;//or you can set these inside the for loop perchanceeee 
-        int tempIndex;
+        char tempChar1;
+        char tempChar2;
+        int tempIndex1;
+        int tempIndex2;
+        
         for (int i = 0; i < message.length(); i++){
-            tempIndex = this.rotors[2].indexOf(message.charAt(i));
-            tempChar = this.rotors[1].charAt(tempIndex);
-            tempIndex = this.rotors[2].indexOf(tempChar);
-            tempChar = this.rotors[0].charAt(tempIndex);
+            tempIndex1 = this.rotors[2].indexOf(message.charAt(i));
+            tempChar1 = this.rotors[1].charAt(tempIndex1);
+            tempIndex2 = this.rotors[2].indexOf(tempChar1);
+            tempChar2 = this.rotors[0].charAt(tempIndex2);
 
-            decryptedString += tempChar;
+            decryptedString += tempChar2;
 
             rotate();
         }
@@ -46,22 +49,24 @@ public class Enigma{
     public String encrypt(String message){
         //return "";
         String encryptedString = "";
-        char tempChar;
-        int tempIndex;
+        char tempChar1;
+        char tempChar2;
+        int tempIndex1;
+        int tempIndex2;
         for (int i = 0; i < message.length(); i++){
             //find the character on the inner ring, note the character aligned with it on outer ring
             //find that character on the middle rotor, then output the one aligned with it on the outer rotor
             //rotate clockwise
             //
             //find index of inner ring, match it to the same index on outer ring
-            tempIndex = this.rotors[0].indexOf(message.charAt(i));            
-            tempChar = this.rotors[2].charAt(tempIndex);
+            tempIndex1 = this.rotors[0].indexOf(message.charAt(i));            
+            tempChar1 = this.rotors[2].charAt(tempIndex1);
             //charAt to the same character in the middle ring
-            tempIndex = this.rotors[1].indexOf(tempChar);
+            tempIndex2 = this.rotors[1].indexOf(tempChar1);
             //find index of middle ring character, match it to the same index on outer ring
-            tempChar = this.rotors[2].charAt(tempIndex);
+            tempChar2 = this.rotors[2].charAt(tempIndex2);
             //add element
-            encryptedString += tempChar;
+            encryptedString += tempChar2;
             //rotate
             rotate(); 
         }
