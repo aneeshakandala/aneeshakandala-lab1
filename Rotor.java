@@ -13,17 +13,25 @@ public class Rotor {
     }
     
     public boolean rotate(){
-        //TODO TESTER!!!!!!
-               
+        String rotor = this.rotorValues;
+
+        rotor = rotorValues.charAt(rotorValues.length()-1) + rotor.substring(0, rotor.length()-1);
+
+        this.rotorValues = rotor;
+
+        if (rotor.charAt(0) == startChar){
+            return true;
+        }
+        return false;
     }
     
 
     public int indexOf(char c){
-        //TODO
+        return this.rotorValues.indexOf(c);
     }
 
     public char charAt(int idx){
-        //TODO
+        return this.rotorValues.charAt(idx);
     }
 }
     
